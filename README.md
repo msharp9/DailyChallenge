@@ -1,0 +1,1 @@
+This repository is an accountability thread of sorts.  While I code most days, the goal it to code everyday.  I will be using github pushes for accountability and visibility.  If I'm not pushing code from another project, I will use this repository to upload something.  Often a challenge from site like codewars, possibly code from a tutorial, or miscellaneous code.
