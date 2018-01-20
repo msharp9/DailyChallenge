@@ -30,3 +30,25 @@ def parade_time(groups, location, speed, pref):
 # Test code:
 test.assert_equals(parade_time(['a','b','c','d','e','f'],3,2,'c'), [3])
 test.assert_equals(parade_time(['c','b','c','d','e','f'],3,2,'c'), [2,3])
+
+
+# A western man is tring to find gold in a river. To do that, he passes a bucket through the river's soil and then checks if it contains any gold. However, he could be more productive if he wrote an algorithm to do the job for him.
+#
+# So, you need to check if there is gold in the bucket, and if so, return True/true. If not, return False/false.
+
+# my solution
+def check_the_bucket(bucket):
+    if "gold" in bucket:
+        return True
+    else:
+        return False
+
+# others:
+def check_the_bucket(bucket):
+    return 'gold' in bucket
+
+
+test.describe("check_the_bucket")
+test.it("should have the value True or False inside of it")
+test.expect(check_the_bucket(['stone', 'stone', 'gold', 'stone', 'stone',]) == True, 'I will bye a teeth')
+test.expect(check_the_bucket(['stone', 'stone', 'stone', 'stone', 'stone',]) == False, 'Not today')
