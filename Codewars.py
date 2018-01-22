@@ -52,3 +52,40 @@ test.describe("check_the_bucket")
 test.it("should have the value True or False inside of it")
 test.expect(check_the_bucket(['stone', 'stone', 'gold', 'stone', 'stone',]) == True, 'I will bye a teeth')
 test.expect(check_the_bucket(['stone', 'stone', 'stone', 'stone', 'stone',]) == False, 'Not today')
+
+
+# Binary multiplication:
+# Above, we are given two numbers 100 and 15. we keep reducing the bigger number by dividing it by 2 and hold the integer part of the division till it is no more divisible by 2. Then we assign the real values to these reduced parts of m. Any reduced number [1,m] has real value of 0 if it is even, and it will have real value of 1 if it is odd. On the other hand the smaller number in this case n keeps on doubling itself the same amount of times m reduces itself. The idea of this method is to change multiplication of two big number to a sequence of multiplication by 0 or 1 and perform addition to get the final product. You can see that from the last column (r*n) above.
+# if we sum the last column we get 0+60+0+0+480+960=1500=100*15 Now your task for this kata will be to get those non-zero number in the last column in an array and return it sorted in descending order.so for the above example the return will be [960,480,60].
+
+# my solution
+import math
+# algorithm is independent of order, but question specifically says to reduce the bigger number
+def bin_mul(m,n):
+    m1 = m
+    n1 = n
+    m = max(m1,n1)
+    n = min(m1,n1)
+    res = []
+    while(m>0):
+        if m%2 and n!=0:
+            res.append(n)
+        n*=2
+        m=math.floor(m*0.5)
+    # check
+    # print(m1, n1, m1*n1, sum(array))
+    return res[::-1]
+
+# similar code:
+def bin_mul(m,n):
+    if m < n: return bin_mul(n,m)
+    if n == 0: return []
+    res = []
+    while m > 0:
+        if m % 2 == 1: res.append(n)
+        m = m//2; n *=2
+    return res[::-1]
+
+
+Test.it("Basic test")
+Test.assert_equals(bin_mul(100,15),[960,480,60])
