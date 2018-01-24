@@ -114,3 +114,20 @@ def SubtractSum(number):
 # Simple solution, all numbers >100 will always end at 99 which is apple.  All other solutions will end up being apple as well due to the pattern hidden in the dictionary.
 def SubtractSum(number):
     return "apple"
+
+
+# Calculating pet years
+
+# my solution:
+def human_years_cat_years_dog_years(human_years):
+    if human_years == 1:
+        res = [human_years,15,15]
+    elif human_years == 2:
+        res = [human_years,24,24]
+    else:
+        res = [human_years,24+4*(human_years-2),24+5*(human_years-2)]
+    return res
+
+# most other code is similar grabbing something different:
+def human_years_cat_years_dog_years(x):
+    return [x, 24+(x-2)*4 if (x != 1) else 15, 24+(x-2)*5 if (x != 1) else 15]
