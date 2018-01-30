@@ -50,3 +50,37 @@ function getBossOrder(bosses) {
   while(s.length<8) s.push(h[s[s.length-1].weapon])
   return s.map(b=>b.name);
 }
+
+
+
+
+//Color Traingle
+
+// My code
+function triangle(row) {
+  let compare = (a,b) => {
+    if(a == b) {
+      return a;
+    } else if (a+b == "BG" | a+b == "GB") {
+      return "R";
+    } else if (a+b == "RG" | a+b == "GR") {
+      return "B";
+    } else {
+      return "G";
+    }
+  }
+
+  if(row.length > 1) {
+    return triangle(row.split('').map( (c,i,a) => i ? compare(c,a[i-1]) : '').join(''));
+  } else {
+    return row;
+  }
+}
+
+// other code I liked the most:
+function triangle(row) {
+  const m = {BB: "B", BG: "R", BR: "G", GB: "R", GG: "G", GR: "B", RB: "G", RG: "B", RR: "R"};
+  while (row.length > 1)
+    row = [...row].reduce((a, v, i) => i ? a + m[[row[i - 1] + row[i]]] : a, '');
+  return row;
+}
