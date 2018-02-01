@@ -84,3 +84,18 @@ function triangle(row) {
     row = [...row].reduce((a, v, i) => i ? a + m[[row[i - 1] + row[i]]] : a, '');
   return row;
 }
+
+
+//Debug the C/F Temp converter code.
+function weatherInfo (temp) {
+  var c = convertToCelsius(temp)
+  if (c <= 0)
+    return (c + " is freezing temperature")
+  else
+    return (c + " is above freezing temperature")
+}
+
+function convertToCelsius (temperature) {
+  var celsius = (temperature - 32) * (5/9)
+  return celsius
+}
