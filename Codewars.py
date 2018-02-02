@@ -131,3 +131,49 @@ def human_years_cat_years_dog_years(human_years):
 # most other code is similar grabbing something different:
 def human_years_cat_years_dog_years(x):
     return [x, 24+(x-2)*4 if (x != 1) else 15, 24+(x-2)*5 if (x != 1) else 15]
+
+
+
+# Converting GPS coorinates from DD to DMS
+# This one was pretty fun, required doing some research
+
+# my solution
+def convert_to_dms(dd_lat, dd_lon):
+    dd_lat = str(float(dd_lat))
+    dd_lon = str(float(dd_lon))
+
+    ns = "S" if "-" in dd_lat else "N"
+    ew = "W" if "-" in dd_lon else "E"
+
+    def lpad(s,n):
+        while len(s) < n:
+            s = '0' + s
+        return s
+
+    def dms(dd,dir):
+        (d, x) = dd.split(".")
+        d = str(abs(int(d)))
+        (m, x) = str(float("0." + x)*60).split(".")
+        s = '{0:.3f}'.format(float("0." + x)*60)
+        d = lpad(d,3)
+        m = lpad(m,2)
+        s = lpad(s,6)
+        return '{}*{}\'{}"{}'.format(d,m,s,dir)
+
+    dms_lat = dms(dd_lat, ns)
+    dms_lon = dms(dd_lon, ew)
+
+    return dms_lat, dms_lon
+
+# other solution that is nice:
+# what I like about this is that it doesn't needlessly convert back and forth from num and str
+# he also does his padding right in the format
+def convert_to_dms (*args):
+    lst = []
+    for i,v in enumerate(map(float,args)):
+        av = abs(v)
+        d  = int(av)
+        m  = int((av-d)*60)
+        s  = (av-d-m/60)*3600
+        lst.append("{:03}*{:02}'{:06.3f}\"{}".format(d,m,s,["NS","EW"][i][v<0]))
+    return tuple(lst)
