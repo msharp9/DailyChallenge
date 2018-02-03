@@ -99,3 +99,12 @@ function convertToCelsius (temperature) {
   var celsius = (temperature - 32) * (5/9)
   return celsius
 }
+
+
+
+//Addition w/o + operator also under 30 characters
+
+//my code using bitwise operators, but ~42 characters
+let madAdd=(a,b)=>b?madAdd(a^b,(a&b)<<1):a
+//my answer
+let madAdd=(a,b)=>a- -b;
