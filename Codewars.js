@@ -108,3 +108,14 @@ function convertToCelsius (temperature) {
 let madAdd=(a,b)=>b?madAdd(a^b,(a&b)<<1):a
 //my answer
 let madAdd=(a,b)=>a- -b;
+
+
+//Subtraction w/o - operator under 30 characters
+
+//again a bitwise operation, still too long though
+let madSub=(a,b)=>b?madSub(a^b,(~a&b)<<1):a
+//my answer
+let madSub=(a,b)=>a+~b+1
+//other interesting solutions
+madSub=(a,b)=>~(~a+b)
+madSub=(a,b)=>a+~0*b
