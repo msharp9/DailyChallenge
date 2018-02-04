@@ -119,3 +119,21 @@ let madSub=(a,b)=>a+~b+1
 //other interesting solutions
 madSub=(a,b)=>~(~a+b)
 madSub=(a,b)=>a+~0*b
+
+
+//multiplication w/o * operator under 30 characters
+//just to keep with tradition, bitwise operation
+let madMul=(a,b,r=0)=> {
+  if(b){
+    if(b&1) {
+      r+=a;
+    }
+    return madMul(a<<1,b>>1,r);
+  }
+  return r;
+};
+//my answer
+madMul=(a,b)=>~~(b/(1/a)+.5)
+//other interesting solutions
+madMul=f=(a,b)=>b&&a+f(a,--b)
+madMul=(a,b)=>eval('a\052b') //this just feels like cheating >_<
