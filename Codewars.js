@@ -137,3 +137,42 @@ madMul=(a,b)=>~~(b/(1/a)+.5)
 //other interesting solutions
 madMul=f=(a,b)=>b&&a+f(a,--b)
 madMul=(a,b)=>eval('a\052b') //this just feels like cheating >_<
+
+
+//division w/o / operator and under 30 characters
+//since I looked into bitwise operations for other katas:
+//however, this appears limited in scope (doesn't return fractions, negatives, ect)
+//algorithm is essentially doing basics of division by hand
+let madDiv=(a,b)=>{
+    let current=1;
+    let answer=0;
+
+    if (b == 0)
+        return NaN;
+
+    if (b == a)
+        return 1;
+
+    while (b <= a) {
+        b <<= 1;
+        current <<= 1;
+    }
+
+    b >>= 1;
+    current >>= 1;
+
+    while (current!=0) {
+        if ( a >= b) {
+            a -= b;
+            answer |= current;
+        }
+        current >>= 1;
+        b >>= 1;
+    }
+    return answer;
+}
+//my answer
+madDiv=(a,b)=>b?a*(b**-1):NaN
+//others - guess the check wasn't needed
+madDiv=(a,b)=>a*b**-1
+madDiv=(a,b)=>eval("a\57b") //cheating again :P
