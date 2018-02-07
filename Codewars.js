@@ -176,3 +176,10 @@ madDiv=(a,b)=>b?a*(b**-1):NaN
 //others - guess the check wasn't needed
 madDiv=(a,b)=>a*b**-1
 madDiv=(a,b)=>eval("a\57b") //cheating again :P
+
+
+//modulus w/o % operator and under 35 characters
+//first attempt - failed for divide by 0
+madMod=(a,b)=>~~(b*(a/b-~~(a/b))+.5)
+//my answer
+madMod=(a,b)=>b?a-~~(a/b)*b:NaN
