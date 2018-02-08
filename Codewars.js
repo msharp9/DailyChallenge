@@ -183,3 +183,14 @@ madDiv=(a,b)=>eval("a\57b") //cheating again :P
 madMod=(a,b)=>~~(b*(a/b-~~(a/b))+.5)
 //my answer
 madMod=(a,b)=>b?a-~~(a/b)*b:NaN
+
+
+
+
+//Hide password parameter in url string
+//my code:
+function hidePasswordFromConnection(urlString){
+  return urlString.replace(/(password=)(.*?)(&|$)/, (m,p1,p2,p3)=> p1+'*'.repeat(p2.length)+p3 )
+}
+//Others
+return urlString.replace(/password=([^&]*)/, (m,p) => 'password=' + '*'.repeat(p.length))
