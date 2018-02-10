@@ -208,3 +208,38 @@ madPow=(a,b)=>b?a/(1/madPow(a,b-1))<<0:1 //errors for rounding
 madPow=m=(a,b)=>b?a/(1/m(a,b-1))<<0:1
 //other solutions
 madPow=(a,b)=>b?a/(1/madPow(a,--b))|0:1
+
+
+
+//Starting Canvas Fun series.  It looks like it's using this npm package https://www.npmjs.com/package/canvas
+//#1 Draw Lines
+//my code
+function drawLines(points) {
+  var canvas = new Canvas(100,100)  //Create a 100 x 100 canvas
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle="#ffffff"
+  ctx.fillRect(0,0,100,100)  //Draw background
+  ctx.strokeStyle="#ff0000"  //Set pen's color
+  ctx.beginPath()
+  //Don't delete or modify the code above
+  //Your code starts here:
+
+
+  let start = points.shift()
+  ctx.moveTo(start[0], start[1])
+  for(let i=0; i<points.length; i++) {
+    ctx.lineTo(points[i][0],points[i][1])
+  }
+
+
+  //Don't delete or modify the following code
+  ctx.stroke()              //Draw the path you made above
+  return canvas.toDataURL() //Returns the image data
+}
+
+//a test:
+var points=[[20,20],[80,20],[80,80],[20,80],[20,20]],
+userImage=drawLines(points),
+expectedImage='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABmJLR0QA/wD/AP+gvaeTAAABQ0lEQVR4nO3dMWrEMBBA0dmQg/loPppu5i1SpZ+QB/sfuBUSH6Fu/Hqe55kwvv57A/mtIJiCYAqCKQimIJiCYAqCKQimIJiCYAqCKQimIJiCYAqCKQimIJjv9RXve31J2nX9fEt2b8h9z5yzuiTtnPXz7t+Q6/qcW/IH5+wNwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwexPtj7ncyZbn7M6931mO8jy5njLg/hnZl794N7SG4IpCKYgmIJgCoIpCKYgmIJgCoIpCKYgmIJgCoIpCKYgmIJgCoIpCOYNCHkYxxmeBQcAAAAASUVORK5CYII='
+showImage(userImage,expectedImage)
+Test.assertEquals(userImage,expectedImage)
