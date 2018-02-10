@@ -177,3 +177,18 @@ def convert_to_dms (*args):
         s  = (av-d-m/60)*3600
         lst.append("{:03}*{:02}'{:06.3f}\"{}".format(d,m,s,["NS","EW"][i][v<0]))
     return tuple(lst)
+
+
+
+# return 5 w/o using any of the following characters: 0123456789*+-/
+# at first I was thinking hex, but a simpler idea worked:
+def unusual_five():
+    return len(['a','b','c','d','e'])
+# other fun solutions:
+def unusual_five():
+    return 'HAHAHAHAHA'.count('HA')
+unusual_five = lambda: ord("")
+def unusual_five():
+    return len("five!")
+def unusual_five():
+    return True << True << True | True
