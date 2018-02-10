@@ -194,3 +194,17 @@ function hidePasswordFromConnection(urlString){
 }
 //Others
 return urlString.replace(/password=([^&]*)/, (m,p) => 'password=' + '*'.repeat(p.length))
+
+
+
+
+//power multiplication w/o * operator in 40 characters (not to use Math functions)
+//first attempt, but still has * (thought it said **)
+let madPow=(a,b)=>b?a*madPow(a,b-1):1
+//combining above w/ previous madMul.  Unforntunately this is too long by 4 characters.
+madPow=(a,b)=>b?~~(a/(1/madPow(a,b-1))+.5):1
+//a little shorter, still one character long
+madPow=(a,b)=>b?a/(1/madPow(a,b-1))<<0:1 //errors for rounding
+madPow=m=(a,b)=>b?a/(1/m(a,b-1))<<0:1
+//other solutions
+madPow=(a,b)=>b?a/(1/madPow(a,--b))|0:1
