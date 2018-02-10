@@ -243,3 +243,34 @@ userImage=drawLines(points),
 expectedImage='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABmJLR0QA/wD/AP+gvaeTAAABQ0lEQVR4nO3dMWrEMBBA0dmQg/loPppu5i1SpZ+QB/sfuBUSH6Fu/Hqe55kwvv57A/mtIJiCYAqCKQimIJiCYAqCKQimIJiCYAqCKQimIJiCYAqCKQimIJjv9RXve31J2nX9fEt2b8h9z5yzuiTtnPXz7t+Q6/qcW/IH5+wNwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwRQEUxBMQTAFwexPtj7ncyZbn7M6931mO8jy5njLg/hnZl794N7SG4IpCKYgmIJgCoIpCKYgmIJgCoIpCKYgmIJgCoIpCKYgmIJgCoIpCOYNCHkYxxmeBQcAAAAASUVORK5CYII='
 showImage(userImage,expectedImage)
 Test.assertEquals(userImage,expectedImage)
+
+
+
+//Did my first translation
+//converted the petals problem in python to javascript (started with an easy one)
+function sakura_fall(v) {
+  return v>0?400/v:0
+}
+//Writing the tests (just matching the orignal python version)
+describe("Basic Tests", function(){
+  Test.assertEquals(sakura_fall(5),80)
+  Test.assertEquals(sakura_fall(10),40)
+  Test.assertEquals(sakura_fall(200),2)
+  Test.assertEquals(sakura_fall(-1),0)
+  Test.assertEquals(sakura_fall(0),0)
+  Test.assertEquals(sakura_fall(12.3),400.0/12.3)
+  Test.assertEquals(sakura_fall(3),400.0/3)
+});
+
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe("Random Tests", function(){
+  for(let i=0; i<50; i++) {
+    let a = randomInt(-10, 50);
+    it (`Testing ${a}`, function(){
+      Test.assertEquals(sakura_fall(a), a>0?400/a:0)
+    })
+  }
+});

@@ -192,3 +192,11 @@ def unusual_five():
     return len("five!")
 def unusual_five():
     return True << True << True | True
+
+
+# Falling petals
+def sakura_fall(v):
+    if v <= 0:
+        return 0
+    return 80*5/v
+# Strangely 5/v*80 kept failing due to rounding issues
