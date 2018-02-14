@@ -200,3 +200,9 @@ def sakura_fall(v):
         return 0
     return 80*5/v
 # Strangely 5/v*80 kept failing due to rounding issues
+
+
+
+# Remove first and last letters (quick one since little time today)
+def remove_char(s):
+    return s[1:-1]
