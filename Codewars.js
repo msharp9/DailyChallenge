@@ -274,3 +274,10 @@ describe("Random Tests", function(){
     })
   }
 });
+
+
+
+// string cleaning was a little too easy so I decided to do it in JS as well as python
+function stringClean(s){
+  return s.replace(/\d/g, '')
+}

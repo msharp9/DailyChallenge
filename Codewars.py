@@ -206,3 +206,14 @@ def sakura_fall(v):
 # Remove first and last letters (quick one since little time today)
 def remove_char(s):
     return s[1:-1]
+
+
+
+# Fix the strings w/ extra #'s
+import re
+def string_clean(s):
+    return re.sub('\d', '', s)
+
+# an interesting pythonic non-regex way (I prefer regex)
+def string_clean(s):
+    return ''.join(x for x in s if not x.isdigit())
