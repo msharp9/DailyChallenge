@@ -281,3 +281,40 @@ describe("Random Tests", function(){
 function stringClean(s){
   return s.replace(/\d/g, '')
 }
+
+
+
+//Canvas #2 Two Rectangles
+function draw(twoRectangles) {
+  var canvas = new Canvas(100,100)  //Create a 100 x 100 canvas
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle="#ffffff"
+  ctx.fillRect(0,0,100,100)  //Draw background
+  //Don't delete or modify the code above
+
+  //Your code:
+  let [rect1,rect2] = twoRectangles;
+  //flatten
+  rect1 = rect1.reduce((a, b) => a.concat(b), []);
+  rect2 = rect2.reduce((a, b) => a.concat(b), []);
+  //reorder top left to bottom right
+  rect1 = [Math.min(rect1[0], rect1[2]), Math.min(rect1[1], rect1[3]), Math.max(rect1[0], rect1[2]), Math.max(rect1[1], rect1[3])];
+  rect2 = [Math.min(rect2[0], rect2[2]), Math.min(rect2[1], rect2[3]), Math.max(rect2[0], rect2[2]), Math.max(rect2[1], rect2[3])];
+  //find intersection
+  inter = [Math.max(rect1[0], rect2[0]), Math.max(rect1[1], rect2[1]), Math.min(rect1[2], rect2[2]), Math.min(rect1[3], rect2[3])];
+  //reorder to [startx, starty, w, h] for fillRect
+  rect1 = [rect1[0], rect1[1], rect1[2]-rect1[0]+1, rect1[3]-rect1[1]+1];
+  rect2 = [rect2[0], rect2[1], rect2[2]-rect2[0]+1, rect2[3]-rect2[1]+1];
+  inter = [inter[0], inter[1], inter[2]-inter[0]+1, inter[3]-inter[1]+1];
+  //draw
+  ctx.fillStyle="blue";
+  ctx.fillRect(...rect1);
+  ctx.fillRect(...rect2);
+  if(inter.every(v=>v>0)) {
+    ctx.fillStyle="black";
+    ctx.fillRect(...inter);
+  }
+
+  //Don't delete or modify the following code
+  return canvas.toDataURL() //Returns the image data
+}
