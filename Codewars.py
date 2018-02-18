@@ -217,3 +217,10 @@ def string_clean(s):
 # an interesting pythonic non-regex way (I prefer regex)
 def string_clean(s):
     return ''.join(x for x in s if not x.isdigit())
+
+
+
+
+# Make a 2-d Array
+def make_2d_list(head,row,col):
+    return [[head+c+(r*col) for c in range(col)] for r in range(row)]
