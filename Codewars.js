@@ -318,3 +318,10 @@ function draw(twoRectangles) {
   //Don't delete or modify the following code
   return canvas.toDataURL() //Returns the image data
 }
+
+
+// One line task: mutliples of 3 and 5
+// most of the challenge was figuring out how to get the rounding issues resolved
+threesAndFives=(n)=>[--n/3-(n/15|0)|0,n/5-(n/15|0)|0,n/15|0]
+// just a little more compressed
+threesAndFives=Q=>[0|--Q/3-(H=Q/15|0),0|Q/5-H,H]
