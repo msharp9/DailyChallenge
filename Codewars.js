@@ -325,3 +325,25 @@ function draw(twoRectangles) {
 threesAndFives=(n)=>[--n/3-(n/15|0)|0,n/5-(n/15|0)|0,n/15|0]
 // just a little more compressed
 threesAndFives=Q=>[0|--Q/3-(H=Q/15|0),0|Q/5-H,H]
+
+
+
+//removing arbitrary bad apples from containers
+function badApples(input) {
+  if (input.length == 0) return input
+  let noBA = input.map(v=> v.filter( (c) => c!=0)).filter(v=>v.length!=0);
+  let j = -1;
+  for(let i=0; i<noBA.length; i++) {
+    if(noBA[i].length < 2) {
+      if(j<0) {
+        console.log(j);
+        j=i;
+        console.log(j);
+      } else {
+        noBA[j].push(noBA[i].pop());
+        j=-1;
+      }
+    }
+  }
+  return noBA.filter(v=>v.length>1)
+}
