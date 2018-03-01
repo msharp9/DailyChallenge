@@ -224,3 +224,22 @@ def string_clean(s):
 # Make a 2-d Array
 def make_2d_list(head,row,col):
     return [[head+c+(r*col) for c in range(col)] for r in range(row)]
+
+
+
+
+# Thinking and testing, solve the problem by evaluating test cases
+# Kata was alot more like a puzzle
+def testit(s):
+    if len(s) < 2:
+        return s
+    o = [ord(l) for l in s]
+    odds = [l for i,l in enumerate(o) if not i%2]
+    evens = [l for i,l in enumerate(o) if i%2]
+    sum1 = []
+    for i in range(len(evens)):
+        sum1.append(odds[i]+evens[i])
+    char = [chr(s//2) for s in sum1]
+    if len(s)%2:
+        char.append(s[-1])
+    return ''.join(char)
