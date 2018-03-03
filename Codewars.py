@@ -243,3 +243,8 @@ def testit(s):
     if len(s)%2:
         char.append(s[-1])
     return ''.join(char)
+
+
+# a simple one
+def better_than_average(class_points, your_points):
+    return your_points > sum(class_points)/len(class_points)
