@@ -347,3 +347,14 @@ function badApples(input) {
   }
   return noBA.filter(v=>v.length>1)
 }
+
+
+// Scrolling text function
+function scrollingText(text){
+  let output = [];
+  let t = text.toUpperCase();
+  for(let i=0, imax=text.length; i<imax; i++) {
+    output.push(t.slice(i)+t.slice(0,i))
+  }
+  return output
+}
