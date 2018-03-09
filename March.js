@@ -20,3 +20,17 @@ class States extends React.Component {
     return <div className="status">{text}</div>
   }
 }
+
+
+// lists and keys in react
+const React = require('react');
+
+const EggList = (props) => {
+  const eggs = props.eggs;
+  const eggList = eggs.map((egg, i) => <EasterEgg key={i} name={egg} />);
+  return <ul>{eggList}</ul>;
+};
+
+const EasterEgg = (props) => {
+  return <li>{props.name}</li>
+};
