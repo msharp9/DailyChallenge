@@ -27,3 +27,14 @@ def rotate_clockwise(matrix):
 # or (yay python!)
 def rotate_clockwise(m):
     return [''.join(_) for _ in zip(*m[::-1])]
+
+
+# Implementing the luhn algorithm to catch transcription errors in CCs
+# https://en.wikipedia.org/wiki/Luhn_algorithm
+def validate(n):
+    double = [int(c)*2 if i%2 else int(c) for i,c in enumerate(str(n)[::-1])]
+    double = [x-9 if x>=10 else x for x in double]
+    # if sum(double)%10:
+    #     return False
+    # return True
+    return not sum(double)%10
