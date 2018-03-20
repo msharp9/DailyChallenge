@@ -38,3 +38,11 @@ def validate(n):
     #     return False
     # return True
     return not sum(double)%10
+
+
+# shorten middle names to initials
+def initialize_names(name):
+    names = name.split()
+    for i in range(1, len(names)-1):
+        names[i] = names[i][0] + '.'
+    return ' '.join(names)
