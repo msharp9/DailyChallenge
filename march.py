@@ -46,3 +46,21 @@ def initialize_names(name):
     for i in range(1, len(names)-1):
         names[i] = names[i][0] + '.'
     return ' '.join(names)
+
+
+# Added freeway game algorithm
+def freeway_game(dist_km_to_exit, my_speed_kph, other_cars):
+    time_on_freeway = dist_km_to_exit/(my_speed_kph/60) # min
+    score = 0
+    for rp,speed in other_cars:
+        if (rp <= 0 and speed>my_speed_kph) or (rp >= 0 and speed<my_speed_kph):
+            pass
+        elif rp<0 and speed<my_speed_kph:
+            t = rp*speed/(speed - my_speed_kph)
+            if time_on_freeway > t:
+                score+=1
+        elif rp>0 and speed>my_speed_kph:
+            t = rp*speed/(speed - my_speed_kph)
+            if time_on_freeway > t:
+                score-=1
+    return score
