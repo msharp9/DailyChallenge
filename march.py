@@ -53,7 +53,7 @@ def freeway_game(dist_km_to_exit, my_speed_kph, other_cars):
     time_on_freeway = dist_km_to_exit/(my_speed_kph/60) # min
     score = 0
     for rp,speed in other_cars:
-        if (rp <= 0 and speed>my_speed_kph) or (rp >= 0 and speed<my_speed_kph):
+        if (rp <= 0 and speed>my_sped_kph) or (rp >= 0 and speed<my_speed_kph):
             pass
         elif rp<0 and speed<my_speed_kph:
             t = rp*speed/(speed - my_speed_kph)
@@ -64,3 +64,9 @@ def freeway_game(dist_km_to_exit, my_speed_kph, other_cars):
             if time_on_freeway > t:
                 score-=1
     return score
+
+
+# Date format check - simple regex
+import re
+def date_checker(date):
+    return bool(re.match('^\d\d-\d\d-\d\d\d\d \d\d:\d\d$', date))
