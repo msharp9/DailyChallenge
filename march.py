@@ -75,3 +75,13 @@ def date_checker(date):
 # explosion
 def explode(s):
     return ''.join([n*int(n) for n in s])
+
+
+# File name cleaning
+import os
+import re
+
+class FileNameExtractor:
+    def extract_file_name(dirty_file_name):
+        file, ext = os.path.splitext(dirty_file_name)
+        return re.match(r'\d+_(.*)',file).group(1)
