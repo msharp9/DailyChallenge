@@ -70,3 +70,8 @@ def freeway_game(dist_km_to_exit, my_speed_kph, other_cars):
 import re
 def date_checker(date):
     return bool(re.match('^\d\d-\d\d-\d\d\d\d \d\d:\d\d$', date))
+
+
+# explosion
+def explode(s):
+    return ''.join([n*int(n) for n in s])
