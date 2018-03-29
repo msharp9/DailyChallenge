@@ -85,3 +85,10 @@ class FileNameExtractor:
     def extract_file_name(dirty_file_name):
         file, ext = os.path.splitext(dirty_file_name)
         return re.match(r'\d+_(.*)',file).group(1)
+
+
+# STRING-ASCII_STRING
+def solution(s):
+    return chr(int(sum([ord(l) for l in s.upper()])/len(s)))
+# meeting length requirement
+solution=lambda s:chr(sum(map(ord,s.upper()))//len(s))
