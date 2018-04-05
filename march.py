@@ -92,3 +92,13 @@ def solution(s):
     return chr(int(sum([ord(l) for l in s.upper()])/len(s)))
 # meeting length requirement
 solution=lambda s:chr(sum(map(ord,s.upper()))//len(s))
+
+
+# A little finance
+import math
+def calculate_retirement(P, FV):
+    rates = {1:0,2:0,3:0,4:0,5:0,6:0}
+    for i in range(1,7):
+        r = i/100
+        rates[i] = math.ceil(math.log(1+(FV*r)/(P*r+P))/math.log(1+r))
+    return rates
