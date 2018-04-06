@@ -102,3 +102,23 @@ def calculate_retirement(P, FV):
         r = i/100
         rates[i] = math.ceil(math.log(1+(FV*r)/(P*r+P))/math.log(1+r))
     return rates
+
+
+# Zip longest function
+def or_arrays(arr1, arr2, z=0):
+    out = []
+    for i in range(max([len(arr1),len(arr2)])):
+        if i >= len(arr1):
+            x = z
+        else:
+            x = arr1[i]
+        if i >= len(arr2):
+            y = z
+        else:
+            y = arr2[i]
+        out.append(x|y)
+    return out
+# or similarly
+from itertools import zip_longest
+def or_arrays(a1, a2, d=0):
+    return [x|y for x,y in zip_longest(a1, a2, fillvalue=d)]
