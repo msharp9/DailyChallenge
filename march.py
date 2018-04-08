@@ -122,3 +122,8 @@ def or_arrays(arr1, arr2, z=0):
 from itertools import zip_longest
 def or_arrays(a1, a2, d=0):
     return [x|y for x,y in zip_longest(a1, a2, fillvalue=d)]
+
+
+# Count letter in string
+def str_count(strng, letter):
+    return len(list(filter(lambda x: x == letter, strng)))
