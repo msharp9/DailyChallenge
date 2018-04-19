@@ -124,6 +124,14 @@ def or_arrays(a1, a2, d=0):
     return [x|y for x,y in zip_longest(a1, a2, fillvalue=d)]
 
 
-# Count letter in string
+# Count letter in stringgit
 def str_count(strng, letter):
-    return len(list(filter(lambda x: x == letter, strng)))
+    # return len(list(filter(lambda x: x == letter, strng)))
+    return strng.count(letter)
+
+
+# Dictionaries can be used for replacement of simple Switch/Case statements
+def update_light(current):
+    return {'green': 'yellow'
+            ,'yellow': 'red'
+            ,'red': 'green'}[current]
