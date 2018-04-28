@@ -55,3 +55,9 @@ class Greet extends React.Component {
 const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
   return distanceToPump <= mpg*fuelLeft;
 };
+
+
+// simple character compare function
+function feast(beast, dish) {
+  return beast[0] == dish[0] && beast.slice(-1) == dish.slice(-1)
+}
